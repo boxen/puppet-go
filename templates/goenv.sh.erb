@@ -1,0 +1,7 @@
+# Configure and activate goenv. You know, for go.
+
+export GOENV_ROOT=<%= @goenv_root %>
+
+export PATH=<%= @goenv_root %>/bin:$PATH
+
+eval "$(goenv init -)"
