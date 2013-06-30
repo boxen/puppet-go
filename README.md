@@ -1,5 +1,7 @@
 # Go Puppet Module for Boxen
 
+[![Build Status](https://travis-ci.org/boxen/puppet-go.png?branch=master)](https://travis-ci.org/boxen/puppet-go)
+
 ## Usage
 
 ```puppet
