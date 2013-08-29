@@ -12,7 +12,7 @@ describe "go" do
     })
 
     should contain_repository("/test/boxen/goenv").with({
-      :ensure => "v0.0.2",
+      :ensure => "v0.0.3",
       :source => "wfarr/goenv",
       :user   => "testuser"
     })
