@@ -15,5 +15,5 @@ class go::params {
     }
   }
 
-  $goenv_version = 'v0.0.2'
+  $goenv_version = 'v0.0.3'
 }
