@@ -8,8 +8,10 @@ describe "go" do
     should contain_package("go").with_ensure(:absent)
 
     should contain_file("/test/boxen/env.d/goenv.sh").with({
-      :mode => '0755'
+      :ensure => "absent"
     })
+
+    should contain_boxen__env_script("go")
 
     should contain_repository("/test/boxen/goenv").with({
       :ensure => "v0.0.3",

@@ -13,8 +13,12 @@ class go(
     }
 
     file { "${boxen::config::envdir}/goenv.sh":
-      content => template('go/goenv.sh.erb'),
-      mode    => '0755'
+      ensure => absent,
+    }
+
+    boxen::env_script { 'go':
+      content  => template('go/goenv.sh.erb'),
+      priority => 'higher',
     }
   }
 
