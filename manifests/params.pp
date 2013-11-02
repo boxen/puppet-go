@@ -19,5 +19,5 @@ class go::params {
 
   $auto_switch  = true
 
-  $chgo_version = 'v0.1.0'
+  $chgo_version = 'v0.1.1'
 }
