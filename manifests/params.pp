@@ -7,7 +7,7 @@ class go::params {
 
       $chgo_user  = $::boxen_user
       $chgo_root  = "${boxen::config::home}/chgo"
-      $goenb_root = "${boxen::config::home}/goenv"
+      $goenv_root = "${boxen::config::home}/goenv"
     }
 
     default: {
