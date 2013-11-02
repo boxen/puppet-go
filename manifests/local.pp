@@ -1,5 +1,5 @@
-# Set a directory's default go version via goenv.
-# Automatically ensures that go version is installed via goenv.
+# Set a directory's default go version via chgo.
+# Automatically ensures that go version is installed via chgo.
 #
 # Usage:
 #
