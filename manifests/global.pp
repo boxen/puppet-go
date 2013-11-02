@@ -6,7 +6,7 @@ class go::global($version = '1.1.1') {
   $klass = join(['go', join(split($version, '[.]'), '_')], '::')
   require $klass
 
-  file { "${go::goenv_root}/version":
+  file { "${go::chgo_root}/version":
     content => "${version}\n",
     replace => true,
   }

@@ -1,4 +1,4 @@
-# Public: Install a Go version with goenv
+# Public: Install a Go version with chgo
 #
 # Usage: go::version { '1.2.3': }
 
@@ -8,7 +8,7 @@ define go::version($ensure = present) {
   validate_re($ensure, '^(present|absent)$',
     "Go::Version[${name}] ensure must be present|absent, is ${ensure}")
 
-  $dest = "${go::goenv_root}/versions/${name}"
+  $dest = "${go::chgo_root}/versions/${name}"
 
   if $ensure == absent {
     file { $dest:
@@ -16,15 +16,15 @@ define go::version($ensure = present) {
       force  => true,
     }
   } else {
-    exec { "goenv install ${name}":
-      command  => "${go::goenv_root}/bin/goenv install ${name}",
+    exec { "chgo install ${name}":
+      command  => "source ${go::chgo_root}/share/chgo/chgo.sh && chgo_install ${name}",
       creates  => $dest,
       provider => shell,
-      user     => $go::goenv_user
+      user     => $go::chgo_user
     }
 
-    Exec["goenv install ${name}"] {
-      environment +> "GOENV_ROOT=${go::goenv_root}"
+    Exec["chgo install ${name}"] {
+      environment +> "CHGO_ROOT=${go::chgo_root}"
     }
   }
 }

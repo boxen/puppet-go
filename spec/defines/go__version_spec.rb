@@ -13,9 +13,9 @@ describe "go::version" do
   it do
     should include_class("go")
 
-    should contain_exec("goenv install 1.2.3").with({
-      :command  => "/test/boxen/goenv/bin/goenv install 1.2.3",
-      :creates  => "/test/boxen/goenv/versions/1.2.3",
+    should contain_exec("chgo install 1.2.3").with({
+      :command  => "source /test/boxen/chgo/share/chgo/chgo.sh && chgo install 1.2.3",
+      :creates  => "/test/boxen/chgo/versions/1.2.3",
       :provider => "shell",
       :user     => "testuser"
     })
@@ -25,7 +25,7 @@ describe "go::version" do
     let(:params) { default_params.merge(:ensure => "absent") }
 
     it do
-      should contain_file("/test/boxen/goenv/versions/1.2.3").with({
+      should contain_file("/test/boxen/chgo/versions/1.2.3").with({
         :ensure => "absent",
         :force  => true
       })

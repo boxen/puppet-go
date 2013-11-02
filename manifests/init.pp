@@ -1,9 +1,12 @@
-# Public: Install GoEnv
+# Public: Install chgo
 
 class go(
-  $goenv_root    = $go::params::goenv_root,
-  $goenv_user    = $go::params::goenv_user,
-  $goenv_version = $go::params::goenv_version,
+  $chgo_root    = $go::params::chgo_root,
+  $chgo_user    = $go::params::chgo_user,
+  $chgo_version = $go::params::chgo_version,
+  $auto_switch  = $go::params::auto_switch,
+
+  $goenv_root   = $go::params::goenv_root,
 ) inherits go::params {
   if $::osfamily == 'Darwin'{
     include homebrew
@@ -16,16 +19,30 @@ class go(
       ensure => absent,
     }
 
-    boxen::env_script { 'go':
-      content  => template('go/goenv.sh.erb'),
-      priority => 'higher',
+    $chgo_auto_ensure = $auto_switch ? {
+      true    => present,
+      default => absent,
+    }
+
+    boxen::env_script {
+      'go':
+        content  => template('go/env.sh.erb'),
+        priority => 'higher' ;
+      'chgo_auto':
+        ensure   => $chgo_auto_ensure,
+        content  => "source \$CHGO_ROOT/share/chgo/auto.sh\n",
+        priority => 99 ;
     }
   }
 
-  repository { $goenv_root:
-    ensure => $goenv_version,
+  repository { $chgo_root:
+    ensure => $chgo_version,
     force  => true,
-    source => 'wfarr/goenv',
-    user   => $goenv_user,
+    source => 'wfarr/chgo',
+    user   => $chgo_user,
+  }
+
+  repository { $goenv_root:
+    ensure => absent,
   }
 }

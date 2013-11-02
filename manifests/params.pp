@@ -5,15 +5,17 @@ class go::params {
     Darwin: {
       include boxen::config
 
-      $goenv_user = $::boxen_user
-      $goenv_root = "${boxen::config::home}/goenv"
+      $chgo_user = $::boxen_user
+      $chgo_root = "${boxen::config::home}/chgo"
     }
 
     default: {
-      $goenv_user = 'root'
-      $goenv_root = '/usr/local/share/goenv'
+      $chgo_user = 'root'
+      $chgo_root = '/usr/local/share/chgo'
     }
   }
 
-  $goenv_version = 'v0.0.3'
+  $auto_switch  = true
+  $goenv_root   = $chgo_root
+  $chgo_version = 'v0.1.0'
 }

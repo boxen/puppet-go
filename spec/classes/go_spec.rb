@@ -5,17 +5,15 @@ describe "go" do
 
   it do
     should include_class("boxen::config")
-    should contain_package("go").with_ensure(:absent)
-
     should contain_file("/test/boxen/env.d/goenv.sh").with({
       :ensure => "absent"
     })
 
     should contain_boxen__env_script("go")
 
-    should contain_repository("/test/boxen/goenv").with({
-      :ensure => "v0.0.3",
-      :source => "wfarr/goenv",
+    should contain_repository("/test/boxen/chgo").with({
+      :ensure => "v0.1.0",
+      :source => "wfarr/chgo",
       :user   => "testuser"
     })
   end
@@ -25,7 +23,6 @@ describe "go" do
 
     it do
       should_not include_class("boxen::config")
-      should_not contain_package("go").with_ensure(:absent)
     end
   end
 end

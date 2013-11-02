@@ -12,7 +12,7 @@ describe "go::global" do
     should include_class("go")
     should include_class("go::1_1_1")
 
-    should contain_file("/test/boxen/goenv/version").with({
+    should contain_file("/test/boxen/chgo/version").with({
       :content => "1.1.1\n",
     })
   end
