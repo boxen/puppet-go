@@ -24,7 +24,7 @@ define go::version($ensure = present) {
     }
 
     Exec["chgo install ${name}"] {
-      environment +> "CHGO_ROOT=${go::chgo_root}"
+      environment => "CHGO_ROOT=${go::chgo_root}"
     }
   }
 }
