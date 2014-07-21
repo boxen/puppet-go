@@ -4,6 +4,7 @@ class go(
   $chgo_root    = $go::params::chgo_root,
   $chgo_user    = $go::params::chgo_user,
   $chgo_version = $go::params::chgo_version,
+  $chgo_source  = $go::params::chgo_source,
   $auto_switch  = $go::params::auto_switch,
 
   $goenv_root   = $go::params::goenv_root,
@@ -38,7 +39,7 @@ class go(
   repository { $chgo_root:
     ensure => $chgo_version,
     force  => true,
-    source => 'wfarr/chgo',
+    source => $chgo_source,
     user   => $chgo_user,
   }
 
