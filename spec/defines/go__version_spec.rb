@@ -14,7 +14,7 @@ describe "go::version" do
     should include_class("go")
 
     should contain_exec("chgo install 1.2.3").with({
-      :command  => "source /test/boxen/chgo/share/chgo/chgo.sh && chgo install 1.2.3",
+      :command  => "source /test/boxen/chgo/share/chgo/chgo.sh && chgo_install 1.2.3",
       :creates  => "/test/boxen/chgo/versions/1.2.3",
       :provider => "shell",
       :user     => "testuser"

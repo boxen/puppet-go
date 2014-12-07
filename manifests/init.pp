@@ -32,7 +32,7 @@ class go(
       'chgo_auto':
         ensure   => $chgo_auto_ensure,
         content  => "source \$CHGO_ROOT/share/chgo/auto.sh\n",
-        priority => 99 ;
+        priority => 'lowest' ;
     }
   }
 

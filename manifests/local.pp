@@ -12,8 +12,7 @@ define go::local($version = undef, $ensure = present) {
   validate_absolute_path($name)
 
   if $ensure == present {
-    $klass = join(['go', join(split($version, '[.]'), '_')], '::')
-    require $klass
+    ensure_resource('go::version', $version, {ensure => present})
   }
 
   file { "${name}/.go-version":

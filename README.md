@@ -9,7 +9,9 @@ include go
 
 go::version { '1.1.1': }
 
-include go::1_1
+class { 'go::global' :
+  version => '1.1.1'
+}
 
 go::local { '/path/to/whatever':
   version => '1.1.1'

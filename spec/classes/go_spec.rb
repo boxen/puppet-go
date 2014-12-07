@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe "go" do
   let(:facts) { default_test_facts }
+  let(:params) { {:chgo_version => 'v0.1.0'} }
 
   it do
     should include_class("boxen::config")

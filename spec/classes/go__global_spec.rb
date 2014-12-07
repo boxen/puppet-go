@@ -1,19 +1,19 @@
-require "spec_helper"
+require 'spec_helper'
 
-describe "go::global" do
+describe 'go::global' do
   let(:facts) { default_test_facts }
   let(:params) do
     {
-      :version => "1.1.1"
+      :version => '1.3.3'
     }
   end
 
   it do
-    should include_class("go")
-    should include_class("go::1_1_1")
+    should include_class('go')
+    should contain_go__version('1.3.3')
 
-    should contain_file("/test/boxen/chgo/version").with({
-      :content => "1.1.1\n",
+    should contain_file('/test/boxen/chgo/version').with({
+      :content => "1.3.3\n",
     })
   end
 end
